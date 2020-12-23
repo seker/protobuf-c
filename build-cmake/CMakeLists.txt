@@ -46,6 +46,10 @@ SET (PC_SOURCES
         ${MAIN_DIR}/protobuf-c/protobuf-c.c
         ${MAIN_DIR}/protobuf-c/protobuf-c.h)
 
+if(APPLE)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -Wall -std=c++11")
+endif()
+
 ADD_LIBRARY(protobuf-c ${PC_SOURCES})
 set_target_properties(protobuf-c PROPERTIES COMPILE_PDB_NAME protobuf-c)
 IF (MSVC AND BUILD_SHARED_LIBS)
